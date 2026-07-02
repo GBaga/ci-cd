@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CI-CD Assignment</title>
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 20px; background-color: #fff; }
+    .header { font-size: 24px; color: #ccc; } /* Poor contrast for A11y */
+    .hero-image { width: 100%; max-width: 800px; }
+    .btn { background: blue; color: white; padding: 10px; cursor: pointer; display: inline-block; }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="header">Welcome to the CI-CD Project</div>
+  
+  <div class="content">
+    <p>This is a sample project to demonstrate CI/CD, A11y, and Performance optimization.</p>
+    <img src="https://via.placeholder.com/2000x1000.png?text=Large+Unoptimized+Image" class="hero-image">
+    <br><br>
+    <div class="btn" onclick="alert('Clicked!')">Click Me</div>
+  </div>
+
+  <script>
+    console.log("App loaded");
+    const start = Date.now();
+    while (Date.now() - start < 500) {} // Artificial block
+  </script>
+</body>
+</html>
