@@ -1,0 +1,29 @@
+name: Branch Name Validation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch name
+        run: |
+          # Get branch name from push or pull request
+          BRANCH_NAME="${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}"
+          echo "Current branch is $BRANCH_NAME"
+          
+          # Skip validation for main branch
+          if [ "$BRANCH_NAME" = "main" ] || [ "$BRANCH_NAME" = "master" ]; then
+            echo "Main branch is allowed."
+            exit 0
+          fi
+          
+          # Validate feature/* prefix
+          if [[ ! "$BRANCH_NAME" == feature/* ]]; then
+            echo "Error: Branch name must start with 'feature/'. Current name is '$BRANCH_NAME'"
+            exit 1
+          fi
+          
+          echo "Branch name is valid."
